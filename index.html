@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clipLEARN Construction Zone</title>
+    <!-- Google Fonts Import -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito Sans', sans-serif; /* Set Nunito Sans as the default font */
+            background-color: #1A1A27; /* Dark background */
+            color: #FFFFFF; /* White text */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        header {
+            margin-bottom: 2rem;
+            margin-top: 8rem;
+        }
+
+        header img {
+            height: 150px; /* Adjust logo height */
+        }
+
+        h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+        }
+
+        h1 span {
+            color: #FF4242; /* Red highlight for "clipLEARN" */
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin: 1rem 1rem;
+            color: #AAAAAA; /* Subtle gray for subtitle text */
+            font-weight: 400; /* Light text weight */
+        }
+
+        .countdown {
+            font-size: 1.75rem;
+            font-weight: 600; /* Bold text for countdown */
+            margin-top: 6rem;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 1rem;
+            font-size: 0.9rem;
+            color: #777777; /* Footer text color */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="clipLEARN_logo_wip.png" alt="ClipLearn Logo"> <!-- Replace with the logo file path -->
+    </header>
+    <main>
+        <h1>We are Building <span>clipLEARN</span> Chat.</h1>
+        <p>Hold tight, we’re gonna drop a dopamine nuke on your lectures.</p>
+        <div class="countdown" id="countdown">Calculating...</div>
+    </main>
+    <footer>
+        ©clipLEARN
+    </footer>
+
+    <script>
+        // Set the target launch date and time
+        const launchDate = new Date("2025-01-01T00:00:00").getTime(); // Adjust the date and time here
+
+        // Update the countdown every second
+        const countdownTimer = setInterval(() => {
+            const now = new Date().getTime();
+            const timeLeft = launchDate - now;
+
+            // Calculate days, hours, minutes, and seconds
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            // Display the result
+            document.getElementById("countdown").innerHTML = 
+                `${days}d - ${hours}h - ${minutes}m - ${seconds}s`;
+
+            // If the countdown is over, display a message
+            if (timeLeft < 0) {
+                clearInterval(countdownTimer);
+                document.getElementById("countdown").innerHTML = "We are live!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
